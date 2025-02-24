@@ -46,7 +46,8 @@ input {
 
 .register-form,
 .login-form,
-.contact-form {
+.contact-form,
+.update-form {
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -28,7 +28,8 @@
 .sign-up-btn,
 .login-btn,
 .log-out-btn,
-.contact-btn {
+.contact-btn,
+.update-btn {
   text-decoration: none;
   display: inline-block;
   color: white;
@@ -51,6 +52,7 @@
 }
 .sign-up-btn:hover,
 .contact-btn:hover,
+.update-btn:hover
 .login-btn:hover,
 .log-out-btn:hover {
   background-position: right center;

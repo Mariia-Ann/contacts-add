@@ -58,3 +58,15 @@ export async function logoutUserService() {
         console.log(e.message);
       }
 }
+
+export async function updateContactService(contact) {
+    try {
+        const { data } = await axios.patch(`/contacts/${contact.id}`, {
+            name: contact.name,
+            number: contact.number,
+          });
+        return data;
+      } catch(e) {
+        console.log(e.message);
+      }
+}

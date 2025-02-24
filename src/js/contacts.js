@@ -1,6 +1,12 @@
 import { refs } from "./refs";
 import { markupContact } from "./markup";
-import { addContactService, deleteContactService, getContactService, logoutUserService } from "./api";
+import {
+  addContactService,
+  deleteContactService,
+  getContactService,
+  logoutUserService
+} from "./api";
+import "./update.js"
 
 refs.contactsForm.addEventListener("submit", onSubmit);
 
@@ -17,33 +23,33 @@ async function onSubmit(e) {
   e.target.reset();
 }
 
-async function reloadPage() {
-    const data = await getContactService();
-    const markup = data.map(markupContact).join("");
-    refs.contactsList.innerHTML = markup
+export async function reloadPage() {
+  const data = await getContactService();
+  const markup = data.map(markupContact).join("");
+  refs.contactsList.innerHTML = markup;
 }
 
 const token = localStorage.getItem(refs.LS_KEY);
 if (!token) {
-    location.replace('/')
+  location.replace("/");
 } else {
-    reloadPage();
+  reloadPage();
 }
 
 refs.contactsList.addEventListener("click", deleteContact);
 
 async function deleteContact(e) {
-    if(e.target.nodeName !== "BUTTON") {
-        return;
-    }
-    await deleteContactService(e.target.parentNode.id);
-    e.target.parentNode.remove();
+  if (e.target.nodeName !== "BUTTON") {
+    return;
+  }
+  await deleteContactService(e.target.parentNode.id);
+  e.target.parentNode.remove();
 }
 
 refs.logoutBtn.addEventListener("click", logout);
 
 async function logout() {
-    await logoutUserService();
-    localStorage.removeItem(refs.LS_KEY);
-    location.replace('/');
+  await logoutUserService();
+  localStorage.removeItem(refs.LS_KEY);
+  location.replace("/");
 }

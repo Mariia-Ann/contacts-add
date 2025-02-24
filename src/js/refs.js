@@ -5,4 +5,5 @@ export const refs = {
   contactsForm: document.querySelector(".contact-form"),
   logoutBtn: document.querySelector(".log-out-btn"),
   contactsList: document.querySelector(".contacts-list"),
+  updateBtn: document.querySelector(".update-btn")
 };
